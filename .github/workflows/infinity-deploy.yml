@@ -16,25 +16,42 @@ concurrency:
 
 jobs:
   build-and-deploy:
+    runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
+      # 🔧 Node setup (required for Astro/Vite)
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # 📦 Install deps
+      - name: Install dependencies
+        run: npm ci
+
+      # 🏗️ BUILD (this is what you're missing)
+      - name: Build site
+        run: npm run build
+
+      # ⚙️ Pages setup
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # 📤 Upload the BUILT output
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Deploys the infinity-web directory as the site root
-          path: 'infinity-web'
+          path: infinity-web   # matches your Astro outDir
 
+      # 🚀 Deploy
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
