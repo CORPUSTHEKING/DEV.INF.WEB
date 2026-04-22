@@ -1,0 +1,9 @@
+.SearchBox_2 { position: relative; }
+.SearchResultsContainer { position: absolute; left: 0; right: 0; top: 100%; background: var(--bgColor-default); border: 1px solid var(--borderColor-default); }
+.MobileSearchOverlay { display: none; position: fixed; inset: 0; background: var(--bgColor-default); z-index: 50; }
+.MobileSearchOverlay.open { display: block; }
+.MobileSearchHeader { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-bottom: 1px solid var(--borderColor-default); }
+.SearchCancelBtn { background: transparent; border: 0; cursor: pointer; }
+.TextInput { width: 100%; padding: 8px 12px; border: 1px solid var(--borderColor-default); border-radius: 6px; font-size: 16px; }
+.DesktopSearchInput { min-width: 220px; }
+.MobileTextInput { flex: 1; }

@@ -1,0 +1,3 @@
+.SidebarBox { position: sticky; overflow: hidden; }
+.SidebarBox_1 { overflow-y: auto; max-height: 100%; padding: 16px; }
+.SidebarBox_2 { display: grid; gap: 8px; }

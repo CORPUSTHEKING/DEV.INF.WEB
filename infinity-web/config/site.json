@@ -1,0 +1,57 @@
+{
+  "title": "Infinity Web",
+  "description": "A modular static site scaffold for Astro + vanilla JS.",
+  "imageUrl": "/favicon.png",
+  "repositoryUrl": "https://github.com/CORPUSTHEKING/DEV.INF.WEB.git",
+  "navigation": [
+    {
+      "title": "Home",
+      "shortName": "Home",
+      "url": "/"
+    },
+    {
+      "title": "Docs",
+      "shortName": "Docs",
+      "url": "/docs",
+      "children": [
+        {
+          "title": "Assistance",
+          "shortName": "Help",
+          "url": "/docs/assistance"
+        },
+        {
+          "title": "Devices",
+          "shortName": "Devices",
+          "url": "/docs/devices"
+        },
+        {
+          "title": "Download",
+          "shortName": "Download",
+          "url": "/docs/download"
+        },
+        {
+          "title": "Platforms",
+          "shortName": "Platforms",
+          "url": "/docs/platforms"
+        },
+        {
+          "title": "Terminal",
+          "shortName": "Terminal",
+          "url": "/docs/terminal"
+        }
+      ],
+      "variants": [
+        {
+          "type": "current",
+          "title": "Current",
+          "url": "/docs"
+        },
+        {
+          "type": "legacy",
+          "title": "Legacy",
+          "url": "/docs/legacy"
+        }
+      ]
+    }
+  ]
+}

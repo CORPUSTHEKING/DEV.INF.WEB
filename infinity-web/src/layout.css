@@ -1,0 +1,16 @@
+.Box { width: 100%; max-width: 960px; }
+.Box_1 { width: 100%; }
+.Box_2 {
+  justify-content: center;
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 24px;
+}
+@media (min-width: 544px) { .Box_2 { padding: 32px; } }
+@media (min-width: 768px) { .Box_2 { padding: 40px; } }
+@media (min-width: 1012px) { .Box_2 { padding: 48px; } }
+.Box_3 { margin-bottom: 24px; }
+.layout-root { min-height: 100vh; display: flex; flex-direction: column; }
+.main-container { display: flex; flex: 1 1 auto; }

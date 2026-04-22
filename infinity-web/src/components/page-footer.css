@@ -1,0 +1,5 @@
+.PageFooter { margin-top: 32px; padding: 24px 0; border-top: 1px solid var(--borderColor-default); }
+.FooterMeta { margin: 0 0 8px; color: var(--fgColor-muted); }
+.FooterLink { display: inline-flex; margin-right: 8px; }
+.Avatar { width: 40px; height: 40px; border-radius: 999px; }
+.FooterContributors { display: flex; flex-wrap: wrap; gap: 8px; }

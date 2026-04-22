@@ -1,0 +1,12 @@
+.VariantLabel { margin: 0 0 8px 0; font-size: 14px; color: var(--fgColor-default); }
+.VariantBox_1 { margin-top: 8px; margin-bottom: 16px; position: relative; }
+.VariantDropdown { position: relative; display: inline-block; width: 100%; }
+.VariantMenuButton { width: 100%; padding: 6px 12px; text-align: left; background: transparent; border: 1px solid var(--borderColor-default, #d0d7de); border-radius: 6px; color: inherit; cursor: pointer; }
+.VariantMenuButton:focus-visible { outline: 2px solid -webkit-focus-ring-color; outline-offset: 1px; }
+@media (min-width: 768px) { .VariantMenuButton { width: auto; min-width: 200px; } .VariantDropdown { width: auto; } }
+.VariantOverlay { display: none; position: absolute; top: 100%; left: 0; margin-top: 4px; background-color: var(--bgColor-default, #ffffff); border: 1px solid var(--borderColor-default, #d0d7de); box-shadow: 0 3px 6px rgba(140, 149, 159, 0.15); border-radius: 6px; min-width: 100%; z-index: 100; max-height: 300px; overflow-y: auto; }
+.VariantOverlay.active { display: block; }
+.VariantGroup { padding: 8px 12px; font-size: 12px; background: rgba(140, 149, 159, 0.1); }
+.VariantItem { display: block; padding: 6px 12px; color: inherit; text-decoration: none; }
+.VariantItem:hover { background-color: var(--bgColor-muted, rgba(140, 149, 159, 0.1)); }
+.VariantItem.active { font-weight: bold; border-left: 2px solid var(--fgColor-accent); }

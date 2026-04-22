@@ -1,0 +1,6 @@
+.DrawerButton { background: transparent; border: 0; color: inherit; cursor: pointer; padding: 8px; }
+.NavDrawer { position: fixed; inset: 0; display: none; z-index: 100; }
+.NavDrawer.open { display: block; }
+.NavDrawerOverlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); }
+.NavDrawerPanel { position: absolute; right: 0; top: 0; width: min(85vw, 360px); height: 100%; background: var(--bgColor-default); padding: 16px; overflow-y: auto; }
+.NavDrawerTitle { display: block; margin-bottom: 16px; }

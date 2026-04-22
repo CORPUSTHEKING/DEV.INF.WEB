@@ -1,0 +1,7 @@
+.NavListRoot { display: grid; gap: 4px; }
+.NavListItem { display: block; padding: 8px 0; color: inherit; text-decoration: none; }
+.NavList_Item_depth1 { font-size: 16px; font-weight: 600; }
+.NavList_Item_depth2 { font-size: 14px; margin-left: 16px; opacity: 0.9; }
+.NavListItem[aria-current="page"] { font-weight: 700; text-decoration: underline; }
+.NavDivider { border: 0; border-top: 1px solid var(--borderColor-default); margin: 12px 0; }
+.NavChildren { margin-left: 12px; }

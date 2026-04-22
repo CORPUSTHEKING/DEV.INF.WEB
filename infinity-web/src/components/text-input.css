@@ -1,0 +1,9 @@
+.TextInput {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border: 1px solid var(--borderColor-default);
+  border-radius: 6px;
+  font-size: 16px;
+}
+.TextInput::placeholder { opacity: 0.7; }

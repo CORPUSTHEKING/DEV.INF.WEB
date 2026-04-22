@@ -1,0 +1,12 @@
+.NpmHeaderBar { background-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff); }
+.stickyHeader { top: 0; position: sticky; }
+.HeaderBox_0, .HeaderBox_1 { display: flex; align-items: center; }
+.SiteTitle { margin-right: 24px; }
+.HeaderLink { display: block; margin-left: 24px; color: #e1e4e8; text-decoration: none; }
+.headerBox { display: flex; height: 56px; padding: 0 16px; align-items: center; justify-content: space-between; background-color: #333333; border-bottom: 1px solid #444d56; }
+.navDesktop { display: none; gap: 16px; }
+.navMobile { display: flex; align-items: center; gap: 8px; }
+@media (min-width: 768px) {
+  .navDesktop { display: flex; }
+  .navMobile { display: none; }
+}

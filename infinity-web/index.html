@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A modular static site scaffold for Astro + vanilla JS." />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Infinity Web</title>
+
+    <link rel="icon" href="/favicon.png" />
+
+    <link rel="stylesheet" href="./assets/css/tokens.css" />
+    <link rel="stylesheet" href="./src/layout.css" />
+    <link rel="stylesheet" href="./src/page.css" />
+    <link rel="stylesheet" href="./src/components/header.css" />
+    <link rel="stylesheet" href="./src/components/link.css" />
+    <link rel="stylesheet" href="./src/components/nav-drawer.css" />
+    <link rel="stylesheet" href="./src/components/nav-items.css" />
+    <link rel="stylesheet" href="./src/components/page-footer.css" />
+    <link rel="stylesheet" href="./src/components/search.css" />
+    <link rel="stylesheet" href="./src/components/sidebar.css" />
+    <link rel="stylesheet" href="./src/components/site-title.css" />
+    <link rel="stylesheet" href="./src/components/table-of-contents.css" />
+    <link rel="stylesheet" href="./src/components/text-input.css" />
+    <link rel="stylesheet" href="./src/components/variant-select.css" />
+    <link rel="stylesheet" href="./src/components/util.css" />
+  </head>
+
+  <body>
+    <a id="skip-to-content" class="VisuallyHidden" href="#app-root">Skip to content</a>
+    <a id="search-box-input" class="VisuallyHidden" href="#app-root">Skip to search</a>
+
+    <div id="app-root"></div>
+
+    <noscript>
+      <main style="padding: 1rem; font-family: system-ui, sans-serif;">
+        <h1>Infinity Web</h1>
+        <p>This site needs JavaScript enabled to render the modular UI.</p>
+      </main>
+    </noscript>
+
+    <script type="module">
+      import './src/root.js';
+
+      import { SITE_CONFIG, THEME_MODES, HEADER_HEIGHT, HEADER_BAR, FULL_HEADER_HEIGHT, SCROLL_MARGIN_TOP, SKIP_TO_CONTENT_ID, SKIP_TO_SEARCH_ID, CLI_PATH, Z_INDEX, DEFAULT_THEME } from './src/constants.js';
+      import { applyTheme } from './src/theme.js';
+      import { Layout, renderLayout } from './src/layout.js';
+      import renderPageElement, { initGlobalStyles } from './src/page.js';
+      import updateHead from './src/head.js';
+      import shared from './src/shared.js';
+      import * as nav from './src/util/get-nav.js';
+
+      import useSiteMetadata from './src/hooks/use-site-metadata.js';
+      import useBreakpoint, { useMediaQuery, useIsMobile } from './src/hooks/use-breakpoint.js';
+      import createLocationChangeWatcher from './src/hooks/use-location-change.js';
+      import usePage from './src/hooks/use-page.js';
+      import searchItems, { createSearchIndex } from './src/hooks/use-search.js';
+
+      import renderMarkdown from './src/mdx/index.js';
+      import { renderCodeBlock } from './src/mdx/code.js';
+      import { renderMdxComponents } from './src/mdx/components.js';
+      import renderNavHierarchy from './src/mdx/nav-hierarchy.js';
+
+      import renderBreadcrumbs from './src/components/breadcrumbs.js';
+      import renderHeader from './src/components/header.js';
+      import { getLocalPath, renderLink } from './src/components/link.js';
+      import renderNavDrawer from './src/components/nav-drawer.js';
+      import renderNavItems from './src/components/nav-items.js';
+      import renderPageFooter from './src/components/page-footer.js';
+      import { renderSearchDesktop, renderSearchMobile } from './src/components/search.js';
+      import renderSidebar from './src/components/sidebar.js';
+      import renderSiteTitle from './src/components/site-title.js';
+      import renderSkipNav, { renderSkipNavPlaceholder } from './src/components/skip-nav.js';
+      import { VISUALLY_HIDDEN_CLASS } from './src/components/visually-hidden.js';
+      import { renderTOCItems, renderTOCDesktop, renderTOCMobile } from './src/components/table-of-contents.js';
+      import renderTextInput from './src/components/text-input.js';
+      import renderVariantSelect from './src/components/variant-select.js';
+
+      import { renderScriptCards, bindCardActions, handleDownload } from './src/components/cards.js';
+      import { renderForm, bindAutosave, serializeForm } from './src/components/forms.js';
+      import { renderDrawer, bindDrawerToggle } from './src/components/drawer.js';
+      import { renderHero } from './src/components/hero.js';
+      import { renderQuickRail, bindQuickRail } from './src/components/quickrail.js';
+      import { renderSearchDock, bindSearchDock } from './src/components/searchdock.js';
+      import { renderSummary } from './src/components/summary.js';
+      import { initRouter } from './src/components/router.js';
+
+      import renderAssistancePage from './src/pages/assistance.js';
+      import renderDevicesPage from './src/pages/devices.js';
+      import renderDisclaimerPage from './src/pages/disclaimer.js';
+      import renderDownloadPage from './src/pages/download.js';
+      import renderIwlPage from './src/pages/iwl.js';
+      import renderPlatformsPage from './src/pages/platforms.js';
+      import renderReportPage from './src/pages/report.js';
+      import renderRequestPage from './src/pages/request.js';
+      import renderReviewPage from './src/pages/review.js';
+      import renderSearchPage from './src/pages/search.js';
+      import renderSharePage from './src/pages/share.js';
+      import renderSponsorPage from './src/pages/sponsor.js';
+      import renderTerminalPage from './src/pages/terminal.js';
+      import renderUploadPage from './src/pages/upload.js';
+
+      window.__INFINITY__ = {
+        SITE_CONFIG,
+        THEME_MODES,
+        HEADER_HEIGHT,
+        HEADER_BAR,
+        FULL_HEADER_HEIGHT,
+        SCROLL_MARGIN_TOP,
+        SKIP_TO_CONTENT_ID,
+        SKIP_TO_SEARCH_ID,
+        CLI_PATH,
+        Z_INDEX,
+        DEFAULT_THEME,
+        applyTheme,
+        Layout,
+        renderLayout,
+        renderPageElement,
+        initGlobalStyles,
+        updateHead,
+        shared,
+        nav,
+        useSiteMetadata,
+        useBreakpoint,
+        useMediaQuery,
+        useIsMobile,
+        createLocationChangeWatcher,
+        usePage,
+        searchItems,
+        createSearchIndex,
+        renderMarkdown,
+        renderCodeBlock,
+        renderMdxComponents,
+        renderNavHierarchy,
+        renderBreadcrumbs,
+        renderHeader,
+        getLocalPath,
+        renderLink,
+        renderNavDrawer,
+        renderNavItems,
+        renderPageFooter,
+        renderSearchDesktop,
+        renderSearchMobile,
+        renderSidebar,
+        renderSiteTitle,
+        renderSkipNav,
+        renderSkipNavPlaceholder,
+        VISUALLY_HIDDEN_CLASS,
+        renderTOCItems,
+        renderTOCDesktop,
+        renderTOCMobile,
+        renderTextInput,
+        renderVariantSelect,
+        renderScriptCards,
+        bindCardActions,
+        handleDownload,
+        renderForm,
+        bindAutosave,
+        serializeForm,
+        renderDrawer,
+        bindDrawerToggle,
+        renderHero,
+        renderQuickRail,
+        bindQuickRail,
+        renderSearchDock,
+        bindSearchDock,
+        renderSummary,
+        initRouter,
+        renderAssistancePage,
+        renderDevicesPage,
+        renderDisclaimerPage,
+        renderDownloadPage,
+        renderIwlPage,
+        renderPlatformsPage,
+        renderReportPage,
+        renderRequestPage,
+        renderReviewPage,
+        renderSearchPage,
+        renderSharePage,
+        renderSponsorPage,
+        renderTerminalPage,
+        renderUploadPage
+      };
+    </script>
+  </body>
+</html>
